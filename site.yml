@@ -30,4 +30,3 @@
       - { file: "RedTeam/subnet-webtier.tf", mode: "0644" }
       - { file: "RedTeam/vm-1.tf", mode: "0644" }
       - { file: "RedTeam/vm-2.tf", mode: "0644" }
-      
