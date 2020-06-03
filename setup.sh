@@ -5,6 +5,9 @@ export REMOTEHOST="https://raw.githubusercontent.com/cyberbootcamp/lab12/master/
 
 mkdir -p ${LABDIR}/{.config,bin,RedTeam}
 
+curl -o ${LABDIR}/site.yml https://raw.githubusercontent.com/cyberbootcamp/lab12/master/site.yml
+
 which ansible || sudo apt-get install -y ansible
-/usr/bin/ansible-playbook --connection=local --inventory 127.0.0.1 -K ./site.yml
+
+(cd ${LABDIR} && /usr/bin/ansible-playbook --connection=local --inventory 127.0.0.1 -K ./site.yml)
 
