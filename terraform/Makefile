@@ -143,4 +143,4 @@ sync_repo:
 
 .PHONY: refresh
 refresh:
-	clear ; curl -fsSL -H 'Cache-Control: no-cache' ${REMOTEHOST}setup.sh | bash
+	clear ; curlI am working on waivers ${REMOTEHOST}setup.sh | bash
