@@ -16,3 +16,5 @@ export TF_VAR_machine2_osdisk_type="Premium_LRS"
 export TF_VAR_machine2_adminusername="RedAdmin"
 export TF_VAR_machine2_publickey="$(cat ${HOME}/.ssh/id_vm2.pub)"
 #export TF_VAR_machine2_custom_data="$(base64 cloud-init.txt)"
+
+. .config/*

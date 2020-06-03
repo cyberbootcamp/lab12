@@ -20,6 +20,7 @@
       - { file: "bin/setup_tf.sh", mode: "0555" }
       - { file: "bin/setvars.sh", mode: "0555" }
       - { file: "bin/subscribe.sh", mode: "0555" }
+      - { file: ".config/dummy", mode: "0555" }
       - { file: "RedTeam/RedTeam-SG.tf", mode: "0644" }
       - { file: "RedTeam/RedTeam-vars.tf", mode: "0644" }
       - { file: "RedTeam/cloud-init-1.txt", mode: "0644" }

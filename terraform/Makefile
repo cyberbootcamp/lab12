@@ -90,6 +90,11 @@ copy_vm-2: copy_vm-1
 	cp RedTeam/cloud-init-2.txt .
 	#base64 ~/my_az_deployment/cloud-init-2.txt > cloud-init-2.b64
 
+.PHONY: set_ip
+set_ip:
+	read -p 'ip ' TF_VAR_my_ip_address
+    echo "export TF_VAR_my_ip_address=${TF_VAR_my_ip_address}" > .config/TF_VAR_my_ip_address
+
 .PHONY: deploy_ansible_key
 deploy_ansible_key:
 	scp ~/.ssh/id_vm2 ${jumpbox_ip}:.ssh/id_rsa
