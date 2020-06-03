@@ -7,8 +7,10 @@
   tasks:
   - name: Copy Files
     get_url:
-      url: "https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/Makefile"
-      dest: /home/kali/my_az_deployment/Makefile
-      mode: '0440'
+      url: "https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/{{ item.url }}"
+      dest: "{{ item.dest }}"
+      mode: "{{ item.mode }}"
       owner: 'kali'
       group: 'kali'
+    with_items:
+      - { url: "Makefile", mode: "0440", dest: "/home/kali/my_az_deployment/Makefile" }
