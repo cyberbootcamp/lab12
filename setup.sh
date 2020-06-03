@@ -7,7 +7,7 @@ mkdir -p ${LABDIR}/{.config,bin,RedTeam}
 
 [[ -e ${LABDIR}/site.yml ]] && rm ${LABDIR}/site.yml
 
-curl -o ${LABDIR}/site.yml https://raw.githubusercontent.com/cyberbootcamp/lab12/master/site.yml
+curl -o ${LABDIR}/site.yml https://raw.githubusercontent.com/cyberbootcamp/lab12/master/site.yml?_=$(date +%s)
 
 which ansible || sudo apt-get install -y ansible
 
