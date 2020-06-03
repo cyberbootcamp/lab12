@@ -9,3 +9,5 @@
       url: "https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/Makefile"
       dest: ${HOME}/my_az_deployment
       mode: '0440'
+      owner: 'kali'
+      group: 'kali'
