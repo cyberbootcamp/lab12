@@ -1,3 +1,5 @@
+REPO = ${REMOTEHOST}
+
 .PHONY: azurecli
 azurecli: mkdirs
 	which az || bin/setup_az.sh
@@ -141,4 +143,4 @@ sync_repo:
 
 .PHONY: refresh
 refresh:
-	clear ; curl -fsSL -H 'Cache-Control: no-cache' https://lab12.raw.kirscht.com/setup.sh | bash
+	clear ; curl -fsSL -H 'Cache-Control: no-cache' ${REMOTEHOST}setup.sh | bash
