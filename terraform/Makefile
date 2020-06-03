@@ -99,7 +99,7 @@ deploy_vm-2: deploy_vm-1
 	#base64 ~/my_az_deployment/cloud-init-2.txt > cloud-init-2.b64
 
 .PHONY: deploy_all
-deploy_all:	copy_vm-2
+deploy_all:	deploy_vm-2
 	echo 'Now run make plan'
 
 .PHONY: set_ip
