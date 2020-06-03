@@ -1,6 +1,7 @@
 #!/bin/env bash
 export LABDIR="${HOME}/my_az_lab/"
 export REMOTEHOST="http://localhost:8080/lab12/"
+export REMOTEHOST="https://raw.githubusercontent.com/cyberbootcamp/lab12/master/"
 
 mkdir -p ${LABDIR}/{.config,bin,RedTeam}
 
