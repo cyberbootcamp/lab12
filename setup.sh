@@ -1,5 +1,5 @@
 #!/bin/env bash
-export LABDIR="${HOME}/my_az_lab/"
+export LABDIR="${HOME}/my_az_deployment/"
 export REMOTEHOST="http://localhost:8080/lab12/"
 export REMOTEHOST=" -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/"
 
