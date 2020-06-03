@@ -7,10 +7,27 @@
   tasks:
   - name: Copy Files
     get_url:
-      url: "https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/{{ item.url }}"
-      dest: "{{ item.dest }}"
+      url: "https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/{{ item.file }}"
+      dest: "/home/kali/my_az_deployment/{{ item.file }}"
       mode: "{{ item.mode }}"
       owner: 'kali'
       group: 'kali'
     with_items:
-      - { url: "Makefile", mode: "0440", dest: "/home/kali/my_az_deployment/Makefile" }
+      - { file: "Makefile", mode: "0440" }
+      - { file: "bin/setup_az.sh", mode: "0555" }
+      - { file: "bin/setup_tf.sh", mode: "0555" }
+      - { file: "bin/setvars.sh", mode: "0555" }
+      - { file: "bin/subscribe.sh", mode: "0555" }
+      - { file: "RedTeam/RedTeam-SG.tf", mode: "0644" }
+      - { file: "RedTeam/RedTeam-vars.tf", mode: "0644" }
+      - { file: "RedTeam/cloud-init-1.txt", mode: "0644" }
+      - { file: "RedTeam/cloud-init-2.txt", mode: "0644" }
+      - { file: "RedTeam/main.tf", mode: "0644" }
+      - { file: "RedTeam/network-1-overlay.tf", mode: "0644" }
+      - { file: "RedTeam/network-1.tf", mode: "0644" }
+      - { file: "RedTeam/output.tf", mode: "0644" }
+      - { file: "RedTeam/setup.sh", mode: "0644" }
+      - { file: "RedTeam/subnet-webtier.tf", mode: "0644" }
+      - { file: "RedTeam/vm-1.tf", mode: "0644" }
+      - { file: "RedTeam/vm-2.tf", mode: "0644" }
+      

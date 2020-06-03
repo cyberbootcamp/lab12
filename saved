@@ -11,23 +11,6 @@ copy_file () {
 
 setup_repo_path
 
-copy_file setup_az.sh bin '0555'
-copy_file setup_tf.sh bin '0555'
-copy_file setvars.sh bin '0555'
-copy_file subscribe.sh bin '0555'
-
-copy_file RedTeam-SG.tf RedTeam '0644'
-copy_file RedTeam-vars.tf RedTeam '0644'
-copy_file cloud-init-1.txt RedTeam '0644'
-copy_file cloud-init-2.txt RedTeam '0644'
-copy_file main.tf RedTeam '0644'
-copy_file network-1-overlay.tf RedTeam '0644'
-copy_file network-1.tf RedTeam '0644'
-copy_file output.tf RedTeam '0644'
-copy_file setup.sh RedTeam '0644'
-copy_file subnet-webtier.tf RedTeam '0644'
-copy_file vm-1.tf RedTeam '0644'
-copy_file vm-2.tf RedTeam '0644'
 
 copy_file Makefile . '0644'
 
