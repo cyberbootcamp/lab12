@@ -93,7 +93,7 @@ copy_vm-2: copy_vm-1
 .PHONY: set_ip
 set_ip:
 	read -p 'ip ' TF_VAR_my_ip_address
-    echo "export TF_VAR_my_ip_address=${TF_VAR_my_ip_address}" > .config/TF_VAR_my_ip_address
+	echo "export TF_VAR_my_ip_address=${TF_VAR_my_ip_address}" > .config/TF_VAR_my_ip_address
 
 .PHONY: deploy_ansible_key
 deploy_ansible_key:
