@@ -86,7 +86,7 @@ copy_vm-1: copy_subnet-webtier
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
 .PHONY: copy_vm-2
 copy_vm-2: copy_vm-1
-	cp vm-2.tf .
+	cp RedTeam/vm-2.tf .
 	cp RedTeam/cloud-init-2.txt .
 	#base64 ~/my_az_deployment/cloud-init-2.txt > cloud-init-2.b64
 
