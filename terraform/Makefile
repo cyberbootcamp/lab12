@@ -52,23 +52,23 @@ copy_vars: copy_setup
 	cp RedTeam/*-vars.tf .
 
 # Copy the main.tf from the repository to the deployment directory.
-.PHONY: copy_main
-copy_main: copy_vars
+.PHONY: deploy_main
+deploy_main: copy_vars
 	cp RedTeam/main.tf .
 
 # Copy the network 1 config file from the repository to the deployment directory.
-.PHONY: copy_network-1-1
-copy_network-1-1: copy_main
+.PHONY: deploy_network-1-1
+deploy_network-1-1: deploy_main
 	cp RedTeam/network-1.tf .
 
 # Copy the network 1 overlay file from the repository to the deployment directory.
-.PHONY: copy_network-1-2
-copy_network-1-2: copy_main
+.PHONY: deploy_network-1-2
+deploy_network-1-2: deploy_main
 	cp RedTeam/network-1-overlay.tf ./network-1.tf
 
 # Copy the network 2 files from the repository to the deployment directory.
-.PHONY: copy_subnet-webtier
-copy_subnet-webtier: copy_network-1-2
+.PHONY: deploy_subnet-webtier
+deploy_subnet-webtier: deploy_network-1-2
 	cp RedTeam/subnet-webtier.tf .
 
 # Copy the red team security group config file from the repository to the deployment directory.
@@ -77,15 +77,15 @@ copy_subnet-webtier: copy_network-1-2
 #	cp ${REPO}/Week-12-Cloud-Security/Resources/terraform/RedTeam/RedTeam-SG.tf ~/my_az_deployment/.
 
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
-.PHONY: copy_vm-1
-copy_vm-1: copy_subnet-webtier
+.PHONY: deploy_vm-1
+deploy_vm-1: deploy_subnet-webtier
 	cp RedTeam/vm-1.tf .
 	cp RedTeam/cloud-init-1.txt .
 	#base64 ~/my_az_deployment/cloud-init-1.txt > cloud-init-1.b64
 
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
-.PHONY: copy_vm-2
-copy_vm-2: copy_vm-1
+.PHONY: deploy_vm-2
+deploy_vm-2: deploy_vm-1
 	cp RedTeam/vm-2.tf .
 	cp RedTeam/cloud-init-2.txt .
 	#base64 ~/my_az_deployment/cloud-init-2.txt > cloud-init-2.b64
