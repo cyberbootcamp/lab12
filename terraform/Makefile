@@ -136,3 +136,7 @@ apply:
 .PHONY: sync_repo
 sync_repo:
 	rsync -zavh ~/repositories/ lab01:repositories
+
+.PHONY: refresh
+refreah:
+	clear ; curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/cyberbootcamp/lab12/master/setup.sh?_=$(date +%s) | bash
