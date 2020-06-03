@@ -80,8 +80,12 @@ deploy_subnet-webtier: deploy_network-1-2
 create_id_rsa: deploy_subnet-webtier
 	ls ${HOME}/.ssh/id_rsa ${HOME}/.ssh/id_rsa.pub || ssh-keygen -f ${HOME}/.ssh/id_rsa
 
+.PHONY: create_id_vm2
+create_id_vm2: create_id_rsa
+	ls ${HOME}/.ssh/id_vm3 ${HOME}/.ssh/id_vm3.pub || ssh-keygen -f ${HOME}/.ssh/id_vm3
+
 .PHONY: create_id_vm3
-create_id_vm3: create_id_rsa
+create_id_vm3: create_id_vm2
 	ls ${HOME}/.ssh/id_vm3 ${HOME}/.ssh/id_vm3.pub || ssh-keygen -f ${HOME}/.ssh/id_vm3
 
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
