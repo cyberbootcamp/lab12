@@ -1,7 +1,5 @@
 #!/bin/env bash
 
-set -x
-
 export LABDIR="${HOME}/my_az_deployment/"
 export REMOTEHOST="http://localhost:8080/lab12/"
 export REMOTEHOST=" -fsSL https://lab12.raw.kirscht.com/"
