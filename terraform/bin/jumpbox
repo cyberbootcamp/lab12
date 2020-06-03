@@ -1,0 +1,14 @@
+#!/bin/env bash
+
+ls ~/.ssh/config || echo 'Include ~/.ssh/config.d/*' > ~/.ssh/config
+ls -d ~/.ssh/config.d || mkdir -p ~/.ssh/config.d
+
+cat << _EOD_ > ~/.ssh/config.d/jumpbox
+Host jumpbox
+    HostName $(terraform output -json | jq '.public_ip_address.value')
+    User     RedAdmin
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    AddKeysToAgent yes
+_EOD_

@@ -160,3 +160,7 @@ sync_repo:
 .PHONY: refresh
 refresh:
 	clear ; curl ${REMOTEHOST}setup.sh | bash
+
+.PHONY: jumpbox_ssh_config
+jumpbox_ssh_config:
+	bin/jumpbox
