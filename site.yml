@@ -8,7 +8,7 @@
 
   - name: ansible create directory example
     file:
-      path: docker
+      path: RedTeam/docker
       state: directory
 
   - name: Copy Files
@@ -40,5 +40,5 @@
       - { file: "RedTeam/subnet-webtier.tf", mode: "0644" }
       - { file: "RedTeam/vm-1.tf", mode: "0644" }
       - { file: "RedTeam/vm-2.tf", mode: "0644" }
-      - { file: "docker/Makefile", mode: "0440" }
-      - { file: "docker/Dockerfile", mode: "0440" }
+      - { file: "RedTeam/docker/Makefile", mode: "0440" }
+      - { file: "RedTeam/docker/Dockerfile", mode: "0440" }
