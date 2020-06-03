@@ -143,4 +143,4 @@ sync_repo:
 
 .PHONY: refresh
 refresh:
-	clear ; curlI am working on waivers ${REMOTEHOST}setup.sh | bash
+	clear ; curl ${REMOTEHOST}setup.sh | bash
