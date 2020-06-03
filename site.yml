@@ -3,7 +3,7 @@
 - name: Install Red-Team lab in Azure
   hosts: localhost
   gather_facts: false
-  become: false
+  become: true
   tasks:
   - name: Copy Files
     get_url:
