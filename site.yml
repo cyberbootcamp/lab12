@@ -5,6 +5,12 @@
   gather_facts: false
   become: true
   tasks:
+
+  - name: ansible create directory example
+    file:
+      path: docker
+      state: directory
+
   - name: Copy Files
     get_url:
       url: "https://lab12.raw.kirscht.com/terraform/{{ item.file }}"
@@ -34,3 +40,5 @@
       - { file: "RedTeam/subnet-webtier.tf", mode: "0644" }
       - { file: "RedTeam/vm-1.tf", mode: "0644" }
       - { file: "RedTeam/vm-2.tf", mode: "0644" }
+      - { file: "docker/Makefile", mode: "0440" }
+      - { file: "docker/Dockerfile", mode: "0440" }
