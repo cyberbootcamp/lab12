@@ -8,8 +8,7 @@
   - name: Copy Files
     get_url:
       url: "https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/Makefile"
-      dest: ${HOME}/my_az_deployment
+      dest: ${HOME}/my_az_deployment/Makefile
       mode: '0440'
       owner: 'kali'
       group: 'kali'
-    
