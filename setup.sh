@@ -5,6 +5,7 @@ export REMOTEHOST="https://raw.githubusercontent.com/cyberbootcamp/lab12/master/
 
 mkdir -p ${LABDIR}/{.config,bin,RedTeam}
 
+which ansible || sudo apt-get install -y ansible
 
 setup_repo_path () {
   echo "setup_repo_path"
@@ -12,6 +13,7 @@ setup_repo_path () {
 
 copy_file () {
   #curl -o ${2:-.}/${1} http://localhost:8080/lab12/${2:-.}/${1}
+  set -x
   curl -o ${LABDIR}/${2:-.}/${1} ${REMOTEHOST}${2:-.}/${1}
   chmod ${3} ${LABDIR}/${2:-.}/${1}
 }
