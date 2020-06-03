@@ -143,4 +143,5 @@ sync_repo:
 
 .PHONY: refresh
 refresh:
-	clear ; curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/cyberbootcamp/lab12/master/setup.sh?_=$(date +%s) | bash
+	# clear ; curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/cyberbootcamp/lab12/master/setup.sh?_=$(date +%s) | bash
+	clear ; curl -fsSL -H 'Cache-Control: no-cache' https://lab12.raw.kirscht.com/setup.sh?_=$(date +%s) | bash
