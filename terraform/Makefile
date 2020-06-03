@@ -76,9 +76,17 @@ deploy_subnet-webtier: deploy_network-1-2
 #copy_redteamsg: copy_network-1-2
 #	cp ${REPO}/Week-12-Cloud-Security/Resources/terraform/RedTeam/RedTeam-SG.tf ~/my_az_deployment/.
 
+.PHONY: create_id_rsa
+create_id_rsa: deploy_subnet-webtier
+	ls ${HOME}/.ssh/id_rsa ${HOME}/.ssh/id_rsa.pub || ssh-keygen -f ${HOME}/.ssh/id_rsa
+
+.PHONY: create_id_vm3
+create_id_vm3: create_id_rsa
+	ls ${HOME}/.ssh/id_vm3 ${HOME}/.ssh/id_vm3.pub || ssh-keygen -f ${HOME}/.ssh/id_vm3
+
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
 .PHONY: deploy_vm-1
-deploy_vm-1: deploy_subnet-webtier
+deploy_vm-1: create_id_vm3
 	cp RedTeam/vm-1.tf .
 	cp RedTeam/cloud-init-1.txt .
 	#base64 ~/my_az_deployment/cloud-init-1.txt > cloud-init-1.b64
