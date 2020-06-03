@@ -4,8 +4,8 @@
   hosts: localhost
   gather_facts: false
   tasks:
-    - name: Copy Files
-      get_url:
-        url: "https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/Makefile"
-        dest: ${HOME}/my_az_deployment
-        mode: '0440'
+  - name: Copy Files
+    get_url:
+      url: "https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/Makefile"
+      dest: ${HOME}/my_az_deployment
+      mode: '0440'
