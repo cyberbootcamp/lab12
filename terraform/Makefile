@@ -49,7 +49,7 @@ copy_setup: mkdirs
 # Copy the vars file from the repostiroty to the deployment directory.
 .PHONY: copy_vars
 copy_vars: copy_setup
-	cp $RedTeam/*-vars.tf .
+	cp RedTeam/*-vars.tf .
 
 # Copy the main.tf from the repository to the deployment directory.
 .PHONY: copy_main
