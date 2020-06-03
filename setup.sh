@@ -5,6 +5,8 @@ export REMOTEHOST=" -H 'Cache-Control: no-cache' https://raw.githubusercontent.c
 
 mkdir -p ${LABDIR}/{.config,bin,RedTeam}
 
+[[ -e ${LABDIR}/site.yml ]] && rm ${LABDIR}/site.yml
+
 curl -o ${LABDIR}/site.yml https://raw.githubusercontent.com/cyberbootcamp/lab12/master/site.yml
 
 which ansible || sudo apt-get install -y ansible
