@@ -82,15 +82,19 @@ create_id_rsa: deploy_subnet-webtier
 
 .PHONY: create_id_vm2
 create_id_vm2: create_id_rsa
-	ls ${HOME}/.ssh/id_vm3 ${HOME}/.ssh/id_vm3.pub || ssh-keygen -f ${HOME}/.ssh/id_vm3
+	ls ${HOME}/.ssh/id_vm2 ${HOME}/.ssh/id_vm2.pub || ssh-keygen -f ${HOME}/.ssh/id_vm3
 
 .PHONY: create_id_vm3
 create_id_vm3: create_id_vm2
 	ls ${HOME}/.ssh/id_vm3 ${HOME}/.ssh/id_vm3.pub || ssh-keygen -f ${HOME}/.ssh/id_vm3
 
+.PHONY: create_authorized_keys
+create_authorized_keys: create_id_vm3
+	ls ${HOME}/.ssh/authorized_keys || cat ${HOME}/.ssh/id_rsa.pub ${HOME}/.ssh/id_vm2.pub ${HOME}/.ssh/id_vm3.pub ${HOME}/.ssh/authorized_keys
+
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
 .PHONY: deploy_vm-1
-deploy_vm-1: create_id_vm3
+deploy_vm-1: create_authorized_keys
 	cp RedTeam/vm-1.tf .
 	cp RedTeam/cloud-init-1.txt .
 	#base64 ~/my_az_deployment/cloud-init-1.txt > cloud-init-1.b64

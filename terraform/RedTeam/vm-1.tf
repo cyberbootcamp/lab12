@@ -66,7 +66,7 @@ resource "azurerm_linux_virtual_machine" "redteam-vm1" {
 
   admin_ssh_key {
     username       = var.machine1_adminusername
-    public_key     = file("/home/kali/.ssh/authorized_keys")
+    public_key     = file("/home/kali/.ssh/id_rsa.pub")
   }
 
 #  boot_diagnostics {
