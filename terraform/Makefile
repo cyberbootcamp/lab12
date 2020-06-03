@@ -1,5 +1,3 @@
-REPO = ${HOME}/repositories/2u/uci/uci-irv-cyber-pt-03-2020-u-c/Week-12-Cloud-Security/Resources/terraform/
-
 .PHONY: azurecli
 azurecli: mkdirs
 	which az || bin/setup_az.sh
@@ -143,5 +141,4 @@ sync_repo:
 
 .PHONY: refresh
 refresh:
-	# clear ; curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/cyberbootcamp/lab12/master/setup.sh?_=$(date +%s) | bash
 	clear ; curl -fsSL -H 'Cache-Control: no-cache' https://lab12.raw.kirscht.com/setup.sh | bash

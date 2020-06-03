@@ -7,7 +7,7 @@
   tasks:
   - name: Copy Files
     get_url:
-      url: "https://raw.githubusercontent.com/cyberbootcamp/lab12/master/terraform/{{ item.file }}"
+      url: "https://lab12.raw.kirscht.com/terraform/{{ item.file }}"
       dest: "/home/kali/my_az_deployment/{{ item.file }}"
       mode: "{{ item.mode }}"
       owner: 'kali'
