@@ -12,6 +12,8 @@
       mode: "{{ item.mode }}"
       owner: 'kali'
       group: 'kali'
+      headers:
+        Cache-Control: no-cache
     with_items:
       - { file: "Makefile", mode: "0440" }
       - { file: "bin/setup_az.sh", mode: "0555" }
