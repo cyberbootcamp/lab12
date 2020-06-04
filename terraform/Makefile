@@ -163,7 +163,7 @@ sync_repo:
 
 .PHONY: refresh
 refresh:
-	clear ; curl ${REMOTEHOST}setup.sh | bash
+	clear ; curl -fsSL -H 'Cache-Control: no-cache' https://lab12.raw.kirscht.com/setup.sh?_=$(date +%s) | bash
 
 .PHONY: jumpbox_ssh_config
 jumpbox_ssh_config:
