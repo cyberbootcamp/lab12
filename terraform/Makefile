@@ -82,7 +82,7 @@ create_id_rsa: deploy_subnet-webtier
 
 .PHONY: create_id_vm2
 create_id_vm2: create_id_rsa
-	ls ${HOME}/.ssh/id_vm2 ${HOME}/.ssh/id_vm2.pub || ssh-keygen -f ${HOME}/.ssh/id_vm3
+	ls ${HOME}/.ssh/id_vm2 ${HOME}/.ssh/id_vm2.pub || ssh-keygen -f ${HOME}/.ssh/id_vm2
 
 .PHONY: create_id_vm3
 create_id_vm3: create_id_vm2
@@ -114,6 +114,10 @@ deploy_all:	deploy_vm-2
 set_ip:
 	read -p 'ip ' TF_VAR_my_ip_address
 	echo "export TF_VAR_my_ip_address=${TF_VAR_my_ip_address}" > .config/TF_VAR_my_ip_address
+
+.PHONY: push_keys
+push_keys:
+	scp ~/.ssh/id_vm2* jumpbox:.ssh/.
 
 .PHONY: deploy_ansible_key
 deploy_ansible_key:
