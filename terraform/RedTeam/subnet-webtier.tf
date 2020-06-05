@@ -4,6 +4,7 @@ resource "azurerm_network_security_group" "RedTeamSG" {
   name                = "RedTeamSecurityGroup"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
+  depends_on = [azurerm_resource_group.rg]
 
   security_rule {
     name                       = "Default-Deny"
@@ -52,4 +53,5 @@ resource "azurerm_subnet" "webtier" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefix       = "10.0.0.0/24"
+  depends_on = [azurerm_network_security_group.example]
 }

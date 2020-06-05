@@ -30,6 +30,7 @@ resource "azurerm_virtual_network" "example" {
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.0.0.0/16"]
   # dns_servers         = ["10.0.0.4", "10.0.0.5"]
+  depends_on = [azurerm_network_security_group.example]
 
 #  ddos_protection_plan {
 #    id     = azurerm_network_ddos_protection_plan.example.id

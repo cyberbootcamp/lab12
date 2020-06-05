@@ -17,7 +17,7 @@ resource "azurerm_network_interface" "redteam-vm1-nic" {
   location                  = azurerm_resource_group.rg.location
   resource_group_name       = azurerm_resource_group.rg.name
   internal_dns_name_label   = "jumpbox"
-  depends_on = [azurerm_public_ip.redteamip]
+  depends_on = [azurerm_public_ip.redteamip,azurerm_resource_group.rg]
 
   ip_configuration {
     name                          = "vm1NicConfiguration"
@@ -82,16 +82,20 @@ resource "azurerm_linux_virtual_machine" "redteam-vm1" {
 
 output "identity" {
   value = "${azurerm_linux_virtual_machine.redteam-vm1.identity}"
+  depends_on = [azurerm_linux_virtual_machine.redteam-vm1]
 }
 
 output "private_ip_address" {
   value = "${azurerm_linux_virtual_machine.redteam-vm1.private_ip_address}"
+  depends_on = [azurerm_linux_virtual_machine.redteam-vm1]
 }
 
 output "public_ip_address" {
   value = "${azurerm_linux_virtual_machine.redteam-vm1.public_ip_address}"
+  depends_on = [azurerm_linux_virtual_machine.redteam-vm1]
 }
 
 output "admin_username" {
   value = "${azurerm_linux_virtual_machine.redteam-vm1.admin_username}"
+  depends_on = [azurerm_linux_virtual_machine.redteam-vm1]
 }
