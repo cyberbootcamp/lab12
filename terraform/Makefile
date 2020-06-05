@@ -90,7 +90,7 @@ create_id_vm3: create_id_vm2
 
 .PHONY: create_authorized_keys
 create_authorized_keys: create_id_vm3
-	ls ${HOME}/.ssh/authorized_keys || cat ${HOME}/.ssh/id_rsa.pub ${HOME}/.ssh/id_vm2.pub ${HOME}/.ssh/id_vm3.pub ${HOME}/.ssh/authorized_keys
+	ls ${HOME}/.ssh/authorized_keys || cat ${HOME}/.ssh/id_rsa.pub ${HOME}/.ssh/id_vm2.pub ${HOME}/.ssh/id_vm3.pub  > ${HOME}/.ssh/authorized_keys
 
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
 .PHONY: deploy_vm-1
@@ -178,5 +178,6 @@ jumpbox_ssh_config:
 
 .PHONY: push_DockerFiles
 push_DockerFiles:
-	scp -r ${HOME}/.ssh/{id_rsa*,id_vm*} jumpbox:.ssh/.
+	scp -r ${HOME}/.ssh/id_rsa* jumpbox:.ssh/.
+	scp -r ${HOME}/.ssh/id_vm* jumpbox:.ssh/.
 	scp -r RedTeam/docker jumpbox:.
