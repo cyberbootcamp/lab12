@@ -4,7 +4,9 @@ build:
 
 .PHONY: start
 start:
-	sudo docker run -it -d --mount src="${HOME}",target=/test_container,type=bind --name ansible ansible
+	sudo docker run -it -d --mount src="${HOME}",target=/test_container,type=bind \
+		--mount src="${HOME}/docker/etc",target=/etc/ansible,type=bind \
+		--name ansible ansible
 
 .PHONY: connect
 connect:
@@ -13,3 +15,7 @@ connect:
 .PHONY: install_files
 install_files:
 	sudo docker exec -i -t ansible /test_container/docker/update_ansible_cfg.sh
+
+# 0644 ansible.cfg
+# hosta
+# dir 0755 roles
