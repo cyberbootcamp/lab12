@@ -18,5 +18,5 @@ variable "machine2_publickey" {}
 variable "my_ip_address" {}
 
 output "my_ip_address" {
-  value = "var.my_ip_address"
+  value = "${var.my_ip_address}"
 }
