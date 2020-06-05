@@ -6,12 +6,12 @@
   become: true
   tasks:
 
-  - name: ansible create directory example
+  - name: ansible create directory
     file:
       path: "{{ item.path }}"
       mode: 0655
       state: directory
-    which_items:
+    with_items:
       - { path: "RedTeam/docker" }
       - { path: "RedTeam/docker/etc" }
       - { path: "RedTeam/docker/wtc/roles" }
