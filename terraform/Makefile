@@ -180,3 +180,11 @@ push_DockerFiles:
 	scp -r ${HOME}/.ssh/id_rsa* jumpbox:.ssh/.
 	scp -r ${HOME}/.ssh/id_vm* jumpbox:.ssh/.
 	scp -r RedTeam/docker jumpbox:.
+
+.PHONY: container_build
+container_build:
+	ssh jumpbox "cd docker ; make build"
+
+.PHONY: container_start
+container_start: container_build
+	ssh jumpbox "cd docker ; make start"
