@@ -112,9 +112,7 @@ deploy_all:	deploy_vm-2
 
 .PHONY: set_ip
 set_ip:
-	read -p 'ip ' TF_VAR_my_ip_address
-	echo "export TF_VAR_my_ip_address=${TF_VAR_my_ip_address}" > .config/TF_VAR_my_ip_address
-	chmod u+x .config/TF_VAR_my_ip_address
+	bin/setup_ip.sh
 
 .PHONY: push_keys
 push_keys:

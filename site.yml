@@ -24,6 +24,7 @@
       - { file: "Makefile", mode: "0440" }
       - { file: "bin/setup_az.sh", mode: "0555" }
       - { file: "bin/setup_tf.sh", mode: "0555" }
+      - { file: "bin/setup_ip.sh", mode: "0555" }
       - { file: "bin/setvars.sh", mode: "0555" }
       - { file: "bin/subscribe.sh", mode: "0555" }
       - { file: "bin/jumpbox", mode: "0555" }
