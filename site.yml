@@ -14,7 +14,7 @@
     with_items:
       - { path: "RedTeam/docker" }
       - { path: "RedTeam/docker/etc" }
-      - { path: "RedTeam/docker/wtc/roles" }
+      - { path: "RedTeam/docker/etc/roles" }
 
   - name: Copy Files
     get_url:
@@ -48,7 +48,7 @@
       - { file: "RedTeam/vm-2.tf", mode: "0644" }
       - { file: "RedTeam/docker/Makefile", mode: "0440" }
       - { file: "RedTeam/docker/Dockerfile", mode: "0440" }
-      - { file: "RedTeam/docker/ansible.cfg", mode: "0644" }
-      - { file: "RedTeam/docker/hosts", mode: "0644" }
+      - { file: "RedTeam/docker/etc/ansible.cfg", mode: "0644" }
+      - { file: "RedTeam/docker/etc/hosts", mode: "0644" }
       - { file: "RedTeam/docker/update_ansible_cfg.sh", mode: "0550" }
 
