@@ -90,7 +90,7 @@ create_id_vm3: create_id_vm2
 
 .PHONY: create_authorized_keys
 create_authorized_keys: create_id_vm3
-	ls ${HOME}/.ssh/authorized_keys || cat ${HOME}/.ssh/id_rsa.pub ${HOME}/.ssh/id_vm2.pub ${HOME}/.ssh/id_vm3.pub  > ${HOME}/.ssh/authorized_keys
+	ls ${HOME}/.ssh/authorized_keys || cat ${HOME}/.ssh/id_rsa.pub ${HOME}/.ssh/id_vm2.pub ${HOME}/.ssh/id_vm3.pub  > l${HOME}/.ssh/authorized_keys
 
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
 .PHONY: deploy_vm-1

@@ -12,4 +12,4 @@ connect:
 
 .PHONY: install_files
 install_files:
-	sudo docker exec -i -t ansible cp /test_container/
+	sudo docker exec -i -t ansible /test_container/docker/update_ansible_cfg.sh
