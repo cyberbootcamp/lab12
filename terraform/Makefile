@@ -132,22 +132,22 @@ deploy_ansible_key:
 # Initialize terraform config.
 .PHONY: init
 init:
-	. ./setup.sh ; terraform init
+	. ./setup.sh ; . ./.config/* ; terraform init
 
 # Run the terraform plan.
 .PHONY: plan
 plan:
-	. ./setup.sh ; terraform plan --out "plan.out"
+	. ./setup.sh ; . ./.config/* ; terraform plan --out "plan.out"
 
 # Run a terraform plan to destroy the environment.
 .PHONY: destroy
 destroy:
-	. ./setup.sh ; terraform plan -destroy --out "plan.out"
+	. ./setup.sh ; . ./.config/* ; terraform plan -destroy --out "plan.out"
 
 # Apply the terraform plan to build or destroy resources.
 .PHONY: apply
 apply:
-	. ./setup.sh ; terraform apply "plan.out"
+	. ./setup.sh ; . ./.config/* ; terraform apply "plan.out"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #
