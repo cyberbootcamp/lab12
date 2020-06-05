@@ -168,3 +168,15 @@ refresh:
 .PHONY: jumpbox_ssh_config
 jumpbox_ssh_config:
 	bin/jumpbox
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#
+#  Ansible Web.
+#
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+.PHONY: push_DockerFiles
+push_DockerFiles:
+	scp -r ${HOME}/.ssh/{id_rsa*,id_vm*} jumpbox:.ssh/.
+	scp -r RedTeam/docker jumpbox:.

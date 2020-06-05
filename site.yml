@@ -42,3 +42,7 @@
       - { file: "RedTeam/vm-2.tf", mode: "0644" }
       - { file: "RedTeam/docker/Makefile", mode: "0440" }
       - { file: "RedTeam/docker/Dockerfile", mode: "0440" }
+      - { file: "RedTeam/docker/ansible.cfg", mode: "0440" }
+      - { file: "RedTeam/docker/hosts", mode: "0440" }
+      - { file: "RedTeam/docker/update_ansible_cfg.sh", mode: "0550" }
+

@@ -2,6 +2,7 @@
 package_upgrade: true
 packages:
   - docker.io
+  - make
 hostname: jumpbox
 runcmd:
   - sudo docker pull cyberxsecurity/ubuntu:bionic

@@ -4,7 +4,12 @@ build:
 
 .PHONY: start
 start:
-	sudo docker run -it -d --mount src="$(pwd)",target=/test_container,type=bind --name ansible ansible
+	sudo docker run -it -d --mount src="${HOME}",target=/test_container,type=bind --name ansible ansible
 
 .PHONY: connect
+connect:
 	sudo docker exec -i -t ansible /bin/bash
+
+.PHONY: install_files
+install_files:
+	sudo docker exec -i -t ansible cp /test_container/
