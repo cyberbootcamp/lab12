@@ -4,7 +4,7 @@ resource "azurerm_network_security_group" "RedTeamSG" {
   name                = "RedTeamSecurityGroup"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  depends_on = [azurerm_resource_group.rg]
+  #depends_on = [azurerm_resource_group.rg]
 
   security_rule {
     name                       = "Default-Deny"
@@ -27,7 +27,7 @@ resource "azurerm_network_security_group" "RedTeamSG" {
     protocol                   = "TCP"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = var.my_ip_address
+    source_address_prefix      = "${var.my_ip_address}"
     destination_address_prefix = "*"
     description = "Allow SSH traffic."
   }
