@@ -16,3 +16,7 @@ variable "machine2_publickey" {}
 #variable "machine2_custom_data" {}
 
 variable "my_ip_address" {}
+
+output "my_ip_address" {
+  value = "var.my_ip_address"
+}
