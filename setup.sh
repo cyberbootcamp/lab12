@@ -10,7 +10,9 @@ mkdir -p ${LABDIR}/{.config,bin,RedTeam}
 
 curl  -o ${LABDIR}/site.yml ${REMOTEHOST}site.yml?_=$(date +%s)
 
+echo "localhost" > ${LABDIR}/ansible_inventory
+
 which ansible || sudo apt-get install -y ansible
 
-(cd ${LABDIR} && /usr/bin/ansible-playbook --connection=local --inventory 127.0.0.1 -K ./site.yml)
+(cd ${LABDIR} && /usr/bin/ansible-playbook --connection=local --inventory ${LABDIR}/ansible_inventory -K ./site.yml)
 

@@ -4,6 +4,9 @@
   hosts: localhost
   gather_facts: false
   become: true
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ansible_playbook_python}}"
   tasks:
 
   - name: ansible create directory
