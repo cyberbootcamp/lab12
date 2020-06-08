@@ -1,16 +1,20 @@
+.PHONY: waitfordocker
+waitfordocker:
+	./waitfordocker.sh
+
 .PHONY: build
-build:
+build: waitfordocker
 	sudo docker build -t ansible .
 
 .PHONY: start
-start:
+start: build
 	sudo docker run -it -d --mount src="${HOME}",target=/test_container,type=bind \
 		--mount src="${HOME}/docker/etc",target=/etc/ansible,type=bind \
 		--mount src="${HOME}/.ssh",target=/home/RedAdmin/.ssh,type=bind \
 		--name ansible ansible
 
 .PHONY: connect
-connect:
+connect: start
 	sudo docker exec -i -t ansible /bin/bash
 
 .PHONY: install_files
