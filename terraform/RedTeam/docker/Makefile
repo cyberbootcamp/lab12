@@ -6,7 +6,7 @@ build:
 start:
 	sudo docker run -it -d --mount src="${HOME}",target=/test_container,type=bind \
 		--mount src="${HOME}/docker/etc",target=/etc/ansible,type=bind \
-		--mount src="${HOME}/.ssh",target=/root/.ssh,type=bind \
+		--mount src="${HOME}/.ssh",target=/home/RedAdmin/.ssh,type=bind \
 		--name ansible ansible
 
 .PHONY: connect
@@ -22,7 +22,7 @@ stop:
 	sudo docker stop ansible
 
 .PHONY: rm
-rm:
+rm: stop
 	sudo docker rm ansible
 
 # 0644 ansible.cfg

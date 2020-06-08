@@ -186,6 +186,7 @@ push_DockerFiles:
 	scp ${HOME}/.ssh/id_vm* jumpbox:.ssh/.
 	scp ${HOME}/.ssh/config jumpbox:.ssh/.
 	scp -r ${HOME}/.ssh/config.d/ jumpbox:.ssh/.
+	ssh jumpbox "sed -i 's/\(HostName\).*/\1 10.0.0.4/'  ~/.ssh/config.d/jumpbox"
 	scp -r RedTeam/docker jumpbox:.
 
 .PHONY: container_build
