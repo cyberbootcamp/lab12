@@ -7,7 +7,7 @@ resource "azurerm_public_ip" "example" {
 
 resource "azurerm_lb" "example" {
   name                = "TestLoadBalancer"
-  location            = "West US"
+  location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
   frontend_ip_configuration {
@@ -35,12 +35,12 @@ resource "azurerm_lb_rule" "example" {
   name                           = "LBRule"
   protocol                       = "Tcp"
   frontend_port                  = 80
-  backend_port                   = 80
-  frontend_ip_configuration_name = "PublicIPAddress"
+  backend_port                   = azurerm_lb_probe.example.port
+  frontend_ip_configuration_name = azurerm_lb.example.frontend_ip_configuration.name
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "example" {
   network_interface_id    = azurerm_network_interface.redteam-vm1-nic.id
-  ip_configuration_name   = "testconfiguration1"
+  ip_configuration_name   = azurerm_lb.example.frontend_ip_configuration.name
   backend_address_pool_id = azurerm_lb_backend_address_pool.example.id
 }
