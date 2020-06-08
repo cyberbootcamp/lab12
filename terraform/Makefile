@@ -107,7 +107,7 @@ deploy_vm-2: deploy_vm-1
 	#base64 ~/my_az_deployment/cloud-init-2.txt > cloud-init-2.b64
 
 .PHONY: deploy_all
-deploy_all:	refresh deploy_vm-2 plan apply push_DockerFiles
+deploy_all:	refresh deploy_vm-2 plan apply sleep30seconds push_DockerFiles
 	echo "Deployment finished"
 
 .PHONY: set_ip
@@ -179,6 +179,10 @@ jumpbox_ssh_config:
 #
 #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+.PHONY: sleep30seconds
+sleep30seconds:
+	sleep 30
 
 .PHONY: push_DockerFiles
 push_DockerFiles: jumpbox_ssh_config
