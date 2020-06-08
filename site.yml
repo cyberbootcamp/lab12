@@ -9,7 +9,7 @@
   - name: ansible create directory
     file:
       path: "{{ item.path }}"
-      mode: 0655
+      mode: 0755
       state: directory
     with_items:
       - { path: "RedTeam/docker" }
