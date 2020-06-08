@@ -182,8 +182,10 @@ jumpbox_ssh_config:
 
 .PHONY: push_DockerFiles
 push_DockerFiles:
-	scp -r ${HOME}/.ssh/id_rsa* jumpbox:.ssh/.
-	scp -r ${HOME}/.ssh/id_vm* jumpbox:.ssh/.
+	scp ${HOME}/.ssh/id_rsa* jumpbox:.ssh/.
+	scp ${HOME}/.ssh/id_vm* jumpbox:.ssh/.
+	scp ${HOME}/.ssh/config jumpbox:.ssh/.
+	scp -r ${HOME}/.ssh/config.d/ jumpbox:.ssh/.
 	scp -r RedTeam/docker jumpbox:.
 
 .PHONY: container_build

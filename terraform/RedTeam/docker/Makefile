@@ -17,6 +17,14 @@ connect:
 install_files:
 	sudo docker exec -i -t ansible /test_container/docker/update_ansible_cfg.sh
 
+.PHONY: stop
+stop:
+	sudo docker stop ansible
+
+.PHONY: rm
+rm:
+	sudo docker rm ansible
+
 # 0644 ansible.cfg
 # hosta
 # dir 0755 roles
