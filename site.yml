@@ -56,4 +56,5 @@
       - { file: "RedTeam/docker/etc/hosts", mode: "0644" }
       - { file: "RedTeam/docker/update_ansible_cfg.sh", mode: "0550" }
       - { file: "RedTeam/docker/waitfordocker.sh", mode: "0550" }
+      - { file: "RedTeam/docker/autoinstall.sh", mode: "0550" }
 
