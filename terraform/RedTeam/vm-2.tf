@@ -18,7 +18,6 @@ resource "azurerm_network_interface" "redteam-vm2-nic" {
   resource_group_name       = azurerm_resource_group.rg.name
   internal_dns_name_label   = "dvwa-vm1"
 
-
   ip_configuration {
     name                          = "vm2NicConfiguration"
     subnet_id                     = azurerm_subnet.webtier.id
