@@ -106,6 +106,10 @@ deploy_vm-2: deploy_vm-1
 	cp RedTeam/cloud-init-2.txt .
 	#base64 ~/my_az_deployment/cloud-init-2.txt > cloud-init-2.b64
 
+.PHONY: loadbalancer
+loadbalancer:
+	cp RedTeam/loadbalancer.tf .
+
 .PHONY: deploy_all
 deploy_all:	refresh deploy_vm-2 plan apply sleep30seconds push_DockerFiles
 	echo "Deployment finished"

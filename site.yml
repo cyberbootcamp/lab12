@@ -43,6 +43,7 @@
       - { file: "RedTeam/RedTeam-vars.tf", mode: "0644" }
       - { file: "RedTeam/cloud-init-1.txt", mode: "0644" }
       - { file: "RedTeam/cloud-init-2.txt", mode: "0644" }
+      - { file: "RedTeam/loadbalancer.tf", mode: "0644" }
       - { file: "RedTeam/main.tf", mode: "0644" }
       - { file: "RedTeam/network-1-overlay.tf", mode: "0644" }
       - { file: "RedTeam/network-1.tf", mode: "0644" }
