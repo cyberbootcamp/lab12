@@ -1,0 +1,14 @@
+#!/bin/env bash
+
+#ls ~/.ssh/config || echo 'Include ~/.ssh/config.d/*' > ~/.ssh/config
+#ls -d ~/.ssh/config.d || mkdir -p ~/.ssh/config.d
+
+cat << _EOD_ > ~/.ssh/config.d/dvwa-vm1
+Host dvwa-vm1
+    HostName dvwa-vm1
+    User     RedAdmin
+    IdentityFile ~/.ssh/id_vm2
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    AddKeysToAgent yes
+_EOD_
