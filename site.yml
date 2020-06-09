@@ -7,15 +7,16 @@
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ansible_playbook_python}}"
+    packages:
+      - ansible
+      - jq
+
   tasks:
 
     - name: Install and Update Software
       apt:
-        name: "{{ item }}"
+        name: "{{ packages }}"
         state: latest
-      with_items:
-        - ansible
-        - jq
 
     - name: ansible create directory
       file:
