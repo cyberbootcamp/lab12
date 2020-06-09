@@ -22,8 +22,8 @@
     - name: Ansible Host Variables
       debug:
         var: hostvars[inventory_hostname]
-        verbosity: 4
-        
+        #verbosity: 4
+
     - name: Install and Update Software
       apt:
         name: "{{ packages }}"
