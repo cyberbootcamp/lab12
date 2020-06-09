@@ -1,9 +1,9 @@
-#resource "azurerm_public_ip" "rt" {
-#  name                = "PublicIPForLB"
-#  location            = azurerm_resource_group.rg.location
-#  resource_group_name = azurerm_resource_group.rg.name
-#  allocation_method   = "Static"
-#}
+resource "azurerm_public_ip" "rt" {
+  name                = "PublicIPForLB"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  allocation_method   = "Static"
+}
 
 resource "azurerm_lb" "rt" {
   name                = "RedTeamLoadBalancer"
@@ -12,7 +12,7 @@ resource "azurerm_lb" "rt" {
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"
-    public_ip_address_id = azurerm_public_ip.redteamip.id
+    public_ip_address_id = azurerm_public_ip.rt.id
   }
 }
 
