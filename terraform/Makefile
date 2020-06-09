@@ -213,7 +213,7 @@ container_start: container_build
 
 .PHONY: myproj_backup
 myproj_backup:
-	@tar czf ${HOME}/my_proj_$(shell date +%y%m%d_%A).tgz my_proj .my_vars
+	@tar czf ${HOME}/my_proj_$(shell date +%y%m%d%s_%A).tgz my_proj .my_vars
 
 .PHONY: myproj_restore
 myproj_restore:
