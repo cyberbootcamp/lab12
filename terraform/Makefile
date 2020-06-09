@@ -221,4 +221,4 @@ myproj_restore:
 	@ls -w 1 ${HOME}/my_proj*.tgz
 	@printf "\n"
 	 @read -p "Enter file name to restore: " FILENAME; \
-        [ -e "$$FILENAME" ] && tar tzf "$$FILENAME"
+        [ -e "$$FILENAME" ] && tar xvzf "$$FILENAME"
