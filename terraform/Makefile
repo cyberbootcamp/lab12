@@ -209,3 +209,7 @@ container_build:
 .PHONY: container_start
 container_start: container_build
 	ssh jumpbox "cd docker ; make start"
+
+.PHONY: backup_myproj
+backup_myproj:
+	tar czf ${HOME}/my_proj_$(date +"%y%m%d_%A.tgz") my_proj .my_vars

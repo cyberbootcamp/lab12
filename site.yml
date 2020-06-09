@@ -12,6 +12,7 @@
       - jq
     directories:
       - path: ".my_vars"
+      - path: "my_proj"
       - path: "RedTeam/docker"
       - path: "RedTeam/docker/etc"
       - path: "RedTeam/docker/etc/roles"
