@@ -92,21 +92,22 @@ create_id_vm3: create_id_vm2
 create_authorized_keys: create_id_vm3
 	ls ${HOME}/.ssh/authorized_keys || cat ${HOME}/.ssh/id_rsa.pub ${HOME}/.ssh/id_vm2.pub ${HOME}/.ssh/id_vm3.pub  > l${HOME}/.ssh/authorized_keys
 
+.PHONY: deploy_RedTag_public_ip
+deploy_RedTag_public_ip: create_authorized_keys
+	cp RedTeam/RedTeam_public_ip.tf .
 
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
 .PHONY: deploy_vm-1
-deploy_vm-1: create_authorized_keys
+deploy_vm-1: deploy_RedTag_public_ip
 	cp RedTeam/vm-1.tf .
 	cp RedTeam/cloud-init-1.txt .
 	#base64 ~/my_az_deployment/cloud-init-1.txt > cloud-init-1.b64
 
-.PHONY: deploy_RedTag_public_ip
-deploy_RedTag_public_ip: deploy_vm-1
-	cp RedTeam/RedTeam_public_ip.tf .
+
 
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
 .PHONY: deploy_vm-2
-deploy_vm-2: RedTag_public_ip
+deploy_vm-2: deploy_vm-1
 	cp RedTeam/vm-2.tf .
 	cp RedTeam/cloud-init-2.txt .
 	#base64 ~/my_az_deployment/cloud-init-2.txt > cloud-init-2.b64
