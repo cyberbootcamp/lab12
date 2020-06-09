@@ -17,6 +17,11 @@
       apt:
         name: "{{ packages }}"
         state: latest
+      register: result
+
+    - debug:
+        var: result
+        verbosity: 2
 
     - name: ansible create directory
       file:
