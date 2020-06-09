@@ -103,8 +103,6 @@ deploy_vm-1: deploy_RedTag_public_ip
 	cp RedTeam/cloud-init-1.txt .
 	#base64 ~/my_az_deployment/cloud-init-1.txt > cloud-init-1.b64
 
-
-
 # Copy the virtual machine 1 config files from the repository to the deployment directory.
 .PHONY: deploy_vm-2
 deploy_vm-2: deploy_vm-1
