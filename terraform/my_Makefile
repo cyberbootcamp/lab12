@@ -1,0 +1,7 @@
+#  Copy this file to my_proj/Makefile
+#
+#  This file is used for custom project.
+
+.PHONY: list
+list:
+	@grep '^[^#[:space:]].*:' Makefile | egrep -v '.PHONY|^list:' | awk -F : '{print $1}' | sed 's/://'

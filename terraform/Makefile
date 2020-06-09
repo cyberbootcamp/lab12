@@ -222,3 +222,7 @@ myproj_restore:
 	@printf "\n"
 	 @read -p "Enter file name to restore: " FILENAME; \
         [ -e "$$FILENAME" ] && tar xvzf "$$FILENAME"
+
+.PHONY: list
+list:
+	@grep '^[^#[:space:]].*:' Makefile | egrep -v '.PHONY|^list:' | awk -F : '{print $1}' | sed 's/://'
