@@ -21,16 +21,17 @@ resource "azurerm_network_security_group" "RedTeamSG" {
 
 
   security_rule {
-    name                       = "Allow-80TCP"
-    priority                   = 4093
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "TCP"
-    source_port_range          = "*"
-    destination_port_range     = "80"
-    source_address_prefix      = "${var.my_ip_address}"
+    name = "Allow-80TCP"
+    priority = 4093
+    direction = "Inbound"
+    access = "Allow"
+    protocol = "TCP"
+    source_port_range = "*"
+    destination_port_range = "80"
+    source_address_prefix = "${var.my_ip_address}"
     destination_address_prefix = "*"
     description = "Allow Web traffic."
+  }
 
   security_rule {
     name                       = "Allow-SSH"
