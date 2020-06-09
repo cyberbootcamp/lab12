@@ -10,6 +10,12 @@
     packages:
       - ansible
       - jq
+    directories:
+      - path: "RedTeam/docker"
+      - path: "RedTeam/docker/etc"
+      - path: "RedTeam/docker/etc/roles"
+      - path: "RedTeam/docker/webserver"
+
 
   tasks:
 
@@ -29,10 +35,7 @@
         mode: 0755
         state: directory
       with_items:
-        - { path: "RedTeam/docker" }
-        - { path: "RedTeam/docker/etc" }
-        - { path: "RedTeam/docker/etc/roles" }
-        - { path: "RedTeam/docker/webserver" }
+        "{{ directories }}"
 
     - name: Copy Files
       get_url:
