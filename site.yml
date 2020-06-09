@@ -39,6 +39,8 @@
     - name: ansible create directory
       file:
         path: "{{ item.path }}"
+        owner: kali
+        group: kali
         mode: 0755
         state: directory
       with_items:
