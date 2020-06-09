@@ -12,7 +12,7 @@ curl  -o ${LABDIR}/site.yml ${REMOTEHOST}site.yml?_=$(date +%s)
 
 echo "localhost" > ${LABDIR}/ansible_inventory
 
-which ansible || sudo apt-get install -y ansible
+which ansible || sudo apt-get install -y ansible jq
 
 (cd ${LABDIR} && /usr/bin/ansible-playbook --connection=local --inventory ${LABDIR}/ansible_inventory -K ./site.yml)
 
