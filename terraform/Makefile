@@ -1,4 +1,5 @@
 REPO = ${REMOTEHOST}
+BACKUP_FILE = "$(date +\"%y%m%d_%A.tgz\")"
 
 .PHONY: azurecli
 azurecli: mkdirs
@@ -210,6 +211,14 @@ container_build:
 container_start: container_build
 	ssh jumpbox "cd docker ; make start"
 
-.PHONY: backup_myproj
-backup_myproj:
-	tar czf ${HOME}/my_proj_$(date +"%y%m%d_%A.tgz") my_proj .my_vars
+.PHONY: myproj_backup
+myproj_backup:
+	@tar czf ${HOME}/my_proj_$(shell date +%y%m%d_%A).tgz my_proj .my_vars
+
+.PHONY: myproj_restore
+myproj_restore:
+	@printf "\nThe following backup files are available for restore\n\n"
+	@ls -w 1 ${HOME}/my_proj*.tgz
+	@printf "\n"
+	 @read -p "Enter file name to restore: " FILENAME; \
+        [ -e "$$FILENAME" ] && tar tzf "$$FILENAME"
