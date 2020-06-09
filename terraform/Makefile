@@ -213,12 +213,12 @@ container_start: container_build
 
 .PHONY: myproj_backup
 myproj_backup:
-	@tar czf ${HOME}/my_proj_$(shell date +%y%m%d%s_%A).tgz my_proj .my_vars
+	@tar -cvzf ${HOME}/my_proj_$(shell date +%y%m%d%s_%A).tgz my_proj .my_vars
 
 .PHONY: myproj_restore
 myproj_restore:
 	@printf "\nThe following backup files are available for restore\n\n"
-	@ls -w 1 ${HOME}/my_proj*.tgz
+	@ls -trw 1 ${HOME}/my_proj*.tgz
 	@printf "\n"
 	 @read -p "Enter file name to restore: " FILENAME; \
         [ -e "$$FILENAME" ] && tar xvzf "$$FILENAME"
