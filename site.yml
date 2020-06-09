@@ -17,6 +17,8 @@
       - path: "RedTeam/docker/etc"
       - path: "RedTeam/docker/etc/roles"
       - path: "RedTeam/docker/webserver"
+      - path: "RedTeam/docker/elasticsearch"
+
 
 
   tasks:
@@ -89,3 +91,4 @@
         - { file: "RedTeam/docker/waitfordocker.sh", mode: "0550" }
         - { file: "RedTeam/docker/autoinstall.sh", mode: "0550" }
         - { file: "RedTeam/docker/webserver/site.yml", mode: "0550" }
+        - { file: "RedTeam/docker/elasticsearch/site.yml", mode: "0550" }

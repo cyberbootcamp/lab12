@@ -25,6 +25,9 @@
 jumpbox
 dvwa-vm1
 
+[elasticsearch]
+dvwa-vm1
+
 # If you have multiple hosts following a pattern you can specify
 # them like this:
 

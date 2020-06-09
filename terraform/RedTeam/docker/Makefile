@@ -12,6 +12,7 @@ start: build
 		--mount src="${HOME}/docker/etc",target=/etc/ansible,type=bind \
 		--mount src="${HOME}/.ssh",target=/home/RedAdmin/.ssh,type=bind \
 		--mount src="${HOME}/docker/webserver",target=/home/RedAdmin/webserver,type=bind \
+		--mount src="${HOME}/docker/elasticsearch",target=/home/RedAdmin/elasticsearch,type=bind \
 		--name ansible ansible
 
 .PHONY: connect

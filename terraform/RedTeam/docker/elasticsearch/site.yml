@@ -1,0 +1,13 @@
+---
+- name: My first playbook
+  hosts: elasticsearch
+  become: true
+  tasks:
+
+     - name: download and launch a docker web container
+      docker_container:
+        name: dvwa
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.5.2
+        pull: yes
+        state: started
+        published_ports: 9200:9200,9300:9300
