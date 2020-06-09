@@ -48,6 +48,7 @@
       - { file: "RedTeam/network-1-overlay.tf", mode: "0644" }
       - { file: "RedTeam/network-1.tf", mode: "0644" }
       - { file: "RedTeam/output.tf", mode: "0644" }
+      - { file: "RedTeam/RedTeam_public_ip.tf", mode: "0644" }
       - { file: "RedTeam/setup.sh", mode: "0644" }
       - { file: "RedTeam/subnet-webtier.tf", mode: "0644" }
       - { file: "RedTeam/vm-1.tf", mode: "0644" }
