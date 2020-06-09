@@ -16,7 +16,7 @@
       with_items:
         - ansible
         - jq
-        -
+
   - name: ansible create directory
     file:
       path: "{{ item.path }}"
