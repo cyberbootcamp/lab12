@@ -18,3 +18,4 @@ export TF_VAR_machine2_publickey="$(cat ${HOME}/.ssh/id_vm2.pub)"
 #export TF_VAR_machine2_custom_data="$(base64 cloud-init.txt)"
 
 . .config/*
+. .my_vars/*

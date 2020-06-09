@@ -11,6 +11,7 @@
       - ansible
       - jq
     directories:
+      - path: ".my_vars"
       - path: "RedTeam/docker"
       - path: "RedTeam/docker/etc"
       - path: "RedTeam/docker/etc/roles"
@@ -61,6 +62,7 @@
         - { file: "bin/jumpbox", mode: "0555" }
         - { file: "bin/dvwa-vm1", mode: "0555" }
         - { file: ".config/dummy", mode: "0555" }
+        - { file: ".my_vars/dummy", mode: "0555" }
         - { file: "RedTeam/RedTeam-SG.tf", mode: "0644" }
         - { file: "RedTeam/RedTeam-vars.tf", mode: "0644" }
         - { file: "RedTeam/cloud-init-1.txt", mode: "0644" }

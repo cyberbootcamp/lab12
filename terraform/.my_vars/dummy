@@ -1,0 +1,17 @@
+cat <<_EOD_
+
+	Directory - .my_vars
+
+	This is a directory for placing your custom scripts for defining variables to be passed into Terraform.
+	Anything defined/exported in this directory override the primary variables found in setup.sh.
+
+	Sample File:
+	---------------------------
+	#!/bin/bash
+
+	export TF_VAR_my_ip_address=172.124.1.196
+	export TF_VAR_my_app_user=RedAdmin
+
+	---------------------------
+
+_EOD_
