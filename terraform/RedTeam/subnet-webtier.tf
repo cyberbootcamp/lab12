@@ -27,7 +27,7 @@ resource "azurerm_network_security_group" "RedTeamSG" {
     access = "Allow"
     protocol = "TCP"
     source_port_range = "*"
-    destination_port_range = "80"
+    destination_port_range = "80,8080"
     source_address_prefix = var.my_ip_address
     destination_address_prefix = "*"
     description = "Allow Web traffic."

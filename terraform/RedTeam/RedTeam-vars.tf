@@ -1,17 +1,40 @@
-variable "resource_group_name" {}
-variable "location" {}
+variable "resource_group_name" {
+  default = "Red-Team"
+}
+variable "location" {
+  default = "westus2"
+}
 
-variable "machine1_size" {}
-variable "machine1_name" {}
-variable "machine1_osdisk_type" {}
-variable "machine1_adminusername" {}
-variable "machine1_publickey" {}
-#variable "machine1_custom_data" {}
+variable "machine1_size" {
+  default = "Standard_B1s"
+}
+variable "machine1_name" {
+  default = "Jump-Box-Provisioner"
+}
+variable "machine1_osdisk_type" {
+  default = "Premium_LRS"
+}
+variable "machine1_adminusername" {
+  default = "RedAdmin"
+}
+variable "machine1_publickey" {
+  #default = file("${path.module}/hello.txt")"file(${HOME}/.ssh/id_rsa.pub)"
+}
 
-variable "machine2_size" {}
-variable "machine2_name" {}
-variable "machine2_osdisk_type" {}
-variable "machine2_adminusername" {}
+variable "machine2_size" {
+  default = var.machine1_size
+}
+
+variable "machine2_name" {
+  default = "DVWA-VM1"
+}
+
+variable "machine2_osdisk_type" {
+  default = var.machine1_osdisk_type
+}
+variable "machine2_adminusername" {
+  default = "RedAdmin"
+}
 variable "machine2_publickey" {}
 #variable "machine2_custom_data" {}
 
