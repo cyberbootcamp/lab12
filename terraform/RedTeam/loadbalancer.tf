@@ -44,3 +44,11 @@ resource "azurerm_network_interface_backend_address_pool_association" "pool1" {
   ip_configuration_name   = "vm2NicConfiguration"
   backend_address_pool_id = azurerm_lb_backend_address_pool.rt.id
 }
+
+output "lbfqdn" {
+  value = "${azurerm_public_ip.rt.fqdn}"
+}
+
+output "lbip" {
+  value = "${azurerm_public_ip.rt.ip_address}"
+}
