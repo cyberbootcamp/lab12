@@ -38,7 +38,7 @@ resource "azurerm_lb_rule" "rt" {
   backend_port                   = azurerm_lb_probe.rt.port
   #frontend_ip_configuration_name = azurerm_lb.rt.frontend_ip_configuration[0].name
   frontend_ip_configuration_name = "PublicIPAddress"
-  probe_id = azurerm_lb_probe.rt.id
+  probe_id                       = azurerm_lb_probe.rt.id
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "pool1" {
@@ -48,9 +48,9 @@ resource "azurerm_network_interface_backend_address_pool_association" "pool1" {
   depends_on = [azurerm_network_interface.redteam-vm2-nic]
 }
 
-output "lbfqdn" {
-  value = "${azurerm_public_ip.rt.fqdn}"
-}
+#output "lbfqdn" {
+#  value = "${azurerm_public_ip.rt.fqdn}"
+#}
 
 output "lbip" {
   value = "${azurerm_public_ip.rt.ip_address}"

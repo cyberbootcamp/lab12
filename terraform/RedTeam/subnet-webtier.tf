@@ -28,7 +28,7 @@ resource "azurerm_network_security_group" "RedTeamSG" {
     protocol = "TCP"
     source_port_range = "*"
     destination_port_range = "80"
-    source_address_prefix = "${var.my_ip_address}"
+    source_address_prefix = var.my_ip_address
     destination_address_prefix = "*"
     description = "Allow Web traffic."
   }
@@ -41,7 +41,7 @@ resource "azurerm_network_security_group" "RedTeamSG" {
     protocol                   = "TCP"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "${var.my_ip_address}"
+    source_address_prefix      = var.my_ip_address
     destination_address_prefix = "*"
     description = "Allow SSH traffic."
   }
@@ -66,6 +66,6 @@ resource "azurerm_subnet" "webtier" {
   name                 = "Web-Tier"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.example.name
-  address_prefix       = "10.0.0.0/24"
+  address_prefixes     = ["10.0.0.0/24"]
   depends_on = [azurerm_network_security_group.example]
 }
