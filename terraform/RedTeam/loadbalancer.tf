@@ -45,6 +45,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "pool1" {
   network_interface_id    = azurerm_network_interface.redteam-vm2-nic.id
   ip_configuration_name   = "vm2NicConfiguration"
   backend_address_pool_id = azurerm_lb_backend_address_pool.rt.id
+  depends_on = [azurerm_network_interface.redteam-vm2-nic]
 }
 
 output "lbfqdn" {
