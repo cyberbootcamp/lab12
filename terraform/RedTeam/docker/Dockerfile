@@ -5,6 +5,6 @@ RUN groupadd -g 1000 RedAdmin && useradd -rm -d /home/RedAdmin -s /bin/bash -g R
 
 USER RedAdmin
 
-WORKDIR /home/redadmin
+WORKDIR /home/RedAdmin
 
 CMD tail -f /dev/null
