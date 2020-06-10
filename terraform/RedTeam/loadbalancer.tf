@@ -36,7 +36,9 @@ resource "azurerm_lb_rule" "rt" {
   protocol                       = "Tcp"
   frontend_port                  = 80
   backend_port                   = azurerm_lb_probe.rt.port
-  frontend_ip_configuration_name = azurerm_lb.rt.frontend_ip_configuration[0].name
+  #frontend_ip_configuration_name = azurerm_lb.rt.frontend_ip_configuration[0].name
+  frontend_ip_configuration_name = "PublicIPAddress"
+  probe_id = "${azurerm_lb_probe.rt.id}"
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "pool1" {
