@@ -175,7 +175,7 @@ refresh:
 
 .PHONY: clean
 clean:
-	rm ${HOME}/my_az_deployment.*.tf
+	rm ${HOME}/my_az_deployment/*.tf
 
 .PHONY: jumpbox_ssh_config
 jumpbox_ssh_config:
