@@ -22,7 +22,7 @@ variable "machine1_publickey" {
 }
 
 variable "machine2_size" {
-  default = var.machine1_size
+  default = "Standard_B1s"
 }
 
 variable "machine2_name" {
@@ -30,7 +30,7 @@ variable "machine2_name" {
 }
 
 variable "machine2_osdisk_type" {
-  default = var.machine1_osdisk_type
+  default = "Premium_LRS"
 }
 variable "machine2_adminusername" {
   default = "RedAdmin"
