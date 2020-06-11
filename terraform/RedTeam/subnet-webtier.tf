@@ -20,7 +20,7 @@ resource "azurerm_network_security_group" "RedTeamSG" {
   }
 
   security_rule {
-    name = "Allow-80TCP"
+    name = "Allow-443TCP"
     priority = 4091
     direction = "Inbound"
     access = "Allow"
