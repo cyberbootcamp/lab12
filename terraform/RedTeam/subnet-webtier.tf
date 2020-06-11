@@ -19,15 +19,27 @@ resource "azurerm_network_security_group" "RedTeamSG" {
     description = "Deny all inbound traffic."
   }
 
-
   security_rule {
     name = "Allow-80TCP"
+    priority = 4092
+    direction = "Inbound"
+    access = "Allow"
+    protocol = "TCP"
+    source_port_range = "*"
+    destination_port_range = "80"
+    source_address_prefix = var.my_ip_address
+    destination_address_prefix = "*"
+    description = "Allow Web traffic."
+  }
+
+  security_rule {
+    name = "Allow-8080TCP"
     priority = 4093
     direction = "Inbound"
     access = "Allow"
     protocol = "TCP"
     source_port_range = "*"
-    destination_port_range = "80,8080"
+    destination_port_range = "8080"
     source_address_prefix = var.my_ip_address
     destination_address_prefix = "*"
     description = "Allow Web traffic."
