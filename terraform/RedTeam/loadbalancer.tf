@@ -21,7 +21,7 @@ resource "azurerm_lb_probe" "rt" {
   resource_group_name = azurerm_resource_group.rg.name
   loadbalancer_id     = azurerm_lb.rt.id
   name                = "http-running-probe"
-  port                = 80
+  port                = 443
   depends_on = [azurerm_lb.rt]
 }
 
@@ -37,7 +37,7 @@ resource "azurerm_lb_rule" "rt" {
   loadbalancer_id                = azurerm_lb.rt.id
   name                           = "LBRule"
   protocol                       = "Tcp"
-  frontend_port                  = 8080
+  frontend_port                  = 443
   backend_port                   = azurerm_lb_probe.rt.port
   #frontend_ip_configuration_name = azurerm_lb.rt.frontend_ip_configuration[0].name
   frontend_ip_configuration_name = "PublicIPAddress"
