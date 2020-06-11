@@ -41,7 +41,8 @@ resource "azurerm_lb_rule" "rt-rule1" {
   backend_port                   = azurerm_lb_probe.rt.port
   #frontend_ip_configuration_name = azurerm_lb.rt.frontend_ip_configuration[0].name
   frontend_ip_configuration_name = "PublicIPAddress"
-  #probe_id                       = azurerm_lb_probe.rt.id
+  probe_id                       = azurerm_lb_probe.rt.id
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.rt.id
   depends_on = [azurerm_lb.rt,azurerm_lb_probe.rt]
 }
 
@@ -55,6 +56,7 @@ resource "azurerm_lb_rule" "rt-rule2" {
   #frontend_ip_configuration_name = azurerm_lb.rt.frontend_ip_configuration[0].name
   frontend_ip_configuration_name = "PublicIPAddress"
   probe_id                       = azurerm_lb_probe.rt.id
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.rt.id
   depends_on = [azurerm_lb.rt,azurerm_lb_probe.rt]
 }
 
