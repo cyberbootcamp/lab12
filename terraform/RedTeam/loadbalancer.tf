@@ -46,19 +46,19 @@ resource "azurerm_lb_rule" "rt-rule1" {
   depends_on = [azurerm_lb.rt,azurerm_lb_probe.rt]
 }
 
-resource "azurerm_lb_rule" "rt-rule2" {
-  resource_group_name            = azurerm_resource_group.rg.name
-  loadbalancer_id                = azurerm_lb.rt.id
-  name                           = "LBRule2"
-  protocol                       = "Tcp"
-  frontend_port                  = 443
-  backend_port                   = azurerm_lb_probe.rt.port
-  #frontend_ip_configuration_name = azurerm_lb.rt.frontend_ip_configuration[0].name
-  frontend_ip_configuration_name = "PublicIPAddress"
-  probe_id                       = azurerm_lb_probe.rt.id
-  backend_address_pool_id        = azurerm_lb_backend_address_pool.rt.id
-  depends_on = [azurerm_lb.rt,azurerm_lb_probe.rt]
-}
+#resource "azurerm_lb_rule" "rt-rule2" {
+#  resource_group_name            = azurerm_resource_group.rg.name
+#  loadbalancer_id                = azurerm_lb.rt.id
+#  name                           = "LBRule2"
+#  protocol                       = "Tcp"
+#  frontend_port                  = 443
+#  backend_port                   = azurerm_lb_probe.rt.port
+#  #frontend_ip_configuration_name = azurerm_lb.rt.frontend_ip_configuration[0].name
+#  frontend_ip_configuration_name = "PublicIPAddress"
+#  probe_id                       = azurerm_lb_probe.rt.id
+#  backend_address_pool_id        = azurerm_lb_backend_address_pool.rt.id
+#  depends_on = [azurerm_lb.rt,azurerm_lb_probe.rt]
+#}
 
 resource "azurerm_network_interface_backend_address_pool_association" "pool1" {
   network_interface_id    = azurerm_network_interface.redteam-vm2-nic.id
