@@ -21,7 +21,7 @@ resource "azurerm_lb_probe" "rt" {
   resource_group_name = azurerm_resource_group.rg.name
   loadbalancer_id     = azurerm_lb.rt.id
   name                = "http-running-probe"
-  port                = 443
+  port                = 80
   depends_on = [azurerm_lb.rt]
 }
 

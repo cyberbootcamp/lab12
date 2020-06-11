@@ -30,4 +30,4 @@
         #image: cyberxsecurity/dvwa
         image: httpd
         state: started
-        published_ports: 443:80
+        published_ports: 80:80
