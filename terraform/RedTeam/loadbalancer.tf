@@ -74,3 +74,4 @@ resource "azurerm_network_interface_backend_address_pool_association" "pool1" {
 output "lbip" {
   value = "${azurerm_public_ip.rt.ip_address}"
 }
+
