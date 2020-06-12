@@ -6,6 +6,9 @@ Lab 12 - Lab Environment in Azure
 clear ; curl -fsSL -H 'Cache-Control: no-cache' https://lab12.raw.kirscht.com/setup.sh?_=$(date +%s) | bash
 ```
 
+```ff
+clear ; curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/cyberbootcamp/lab12/korben/setup.sh | bash
+```
 ## Tools
 
 If the Azure CLI or Terraform are not installed, run the following to install those tools.
