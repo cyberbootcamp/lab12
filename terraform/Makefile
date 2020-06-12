@@ -58,9 +58,12 @@ deploy_main: copy_vars
 	cp RedTeam/main.tf .
 
 # Copy the network 1 config file from the repository to the deployment directory.
-.PHONY: deploy_network-1-1
-deploy_network-1-1: deploy_main
+.PHONY: deploy_network-1
+deploy_network-1: deploy_main
 	cp RedTeam/network-1.tf .
+	cp RedTeam/RedTeam-SG1.tf .
+	cp RedTeam/RedTeam-SG2.tf .
+	cp RedTeam/RedTeam-SG3.tf .
 
 # Copy the network 1 overlay file from the repository to the deployment directory.
 .PHONY: deploy_network-1-2
@@ -78,7 +81,7 @@ deploy_subnet-webtier: deploy_network-1-2
 #	cp ${REPO}/Week-12-Cloud-Security/Resources/terraform/RedTeam/RedTeam-SG.tf ~/my_az_deployment/.
 
 .PHONY: create_id_rsa
-create_id_rsa: deploy_subnet-webtier
+create_id_rsa: deploy_network-1
 	ls ${HOME}/.ssh/id_rsa ${HOME}/.ssh/id_rsa.pub || ssh-keygen -f ${HOME}/.ssh/id_rsa
 
 .PHONY: create_id_vm2
@@ -140,22 +143,23 @@ deploy_ansible_key:
 # Initialize terraform config.
 .PHONY: init
 init:
-	. ./setup.sh ; . ./.config/* ; terraform init
+	. ./setup.sh ; terraform init
 
 # Run the terraform plan.
 .PHONY: plan
 plan:
-	. ./setup.sh ; . ./.config/* ; terraform plan --out "plan.out"
+	ls terraform.tfstate || . ./setup.sh ; terraform init
+	. ./setup.sh ; terraform plan --out "plan.out"
 
 # Run a terraform plan to destroy the environment.
 .PHONY: destroy
 destroy:
-	. ./setup.sh ; . ./.config/* ; terraform plan -destroy --out "plan.out"
+	. ./setup.sh ; terraform plan -destroy --out "plan.out"
 
 # Apply the terraform plan to build or destroy resources.
 .PHONY: apply
 apply:
-	. ./setup.sh ; . ./.config/* ; terraform apply "plan.out"
+	. ./setup.sh ; terraform apply "plan.out"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #
@@ -171,7 +175,7 @@ sync_repo:
 
 .PHONY: refresh
 refresh:
-	clear ; curl -fsSL -H 'Cache-Control: no-cache' https://lab12.raw.kirscht.com/setup.sh?_=$(date +%s) | bash
+	clear ; curl -fsSL -H 'Cache-Control: no-cache' $(shell cat .config/REMOTEHOST)/setup.sh | bash
 
 .PHONY: clean
 clean:

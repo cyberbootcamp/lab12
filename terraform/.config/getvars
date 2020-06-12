@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ls ./.config/my_ip_address || touch ./.config/my_ip_address
+ls ./.config/LABDIR || touch ./.config/LABDIR
+ls ./.config/REMOTEHOST || touch ./.config/REMOTEHOST
+
+export my_ip_address=$(cat .config/my_ip_address)
+export TF_VAR_my_ip_address=$(cat .config/my_ip_address)
+export LABDIR=$(cat .config/LABDIR)
+export REMOTEHOST=$(cat .config/REMOTEHOST)
