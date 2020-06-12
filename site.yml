@@ -76,6 +76,7 @@
         - { file: "RedTeam/loadbalancer.tf", mode: "0644" }
         - { file: "RedTeam/loadbalancer-2.tf", mode: "0644" }
         - { file: "RedTeam/main.tf", mode: "0644" }
+        - { file: "RedTeam/mainv2.tf", mode: "0644" }
         - { file: "RedTeam/network-1-overlay.tf", mode: "0644" }
         - { file: "RedTeam/network-1.tf", mode: "0644" }
         - { file: "RedTeam/output.tf", mode: "0644" }

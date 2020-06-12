@@ -9,22 +9,24 @@ resource "azurerm_frontdoor" "fd1" {
   enforce_backend_pools_certificate_name_check = false
   name = "ReadTeamFrontDoor"
   resource_group_name = azurerm_resource_group.rg.name
+  depends_on = ["azurerm_lb.rt"]
+
   backend_pool {
     health_probe_name = azurerm_lb_probe.rt.name
     load_balancing_name = azurerm_lb.rt.name
     name = "BackendPool1"
     backend {
-      address = "www.redteam.io"
-      host_header = "www.redteam.io"
+      address = azurerm_public_ip.rt.ip_address
+      host_header = azurerm_public_ip.rt.
       http_port = 80
       https_port = 443
     }
   }
   backend_pool_health_probe {
-    name = "exampleHealthProbeSetting1"
+    name = "http-running-probe"
   }
   backend_pool_load_balancing {
-    name = "exampleLoadBalancingSettings1"
+    name = "RedTeamLoadBalancer"
   }
   frontend_endpoint {
     custom_https_provisioning_enabled = false
@@ -33,9 +35,12 @@ resource "azurerm_frontdoor" "fd1" {
   }
   routing_rule {
     accepted_protocols = ["Http","Https"]
-    frontend_endpoints = ["exampleFrontendEndpoint1"]
-    name = "exampleRoutingRule1"
+    frontend_endpoints = ["RedTeamFEndpoint"]
+    name = azurerm_lb_rule.rt-rule1.name
     patterns_to_match = ["/*"]
+    forwarding_configuration {
+      backend_pool_name = azurerm_lb_backend_address_pool.rt.name
+    }
   }
 }
 resource "azurerm_lb" "rt" {
