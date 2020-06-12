@@ -25,6 +25,14 @@
 
   tasks:
 
+    - name: LABDIR Variables
+      debug:
+        var: labdir
+
+    - name: REMOTEHOST Variables
+      debug:
+        var: remotehost
+
     - name: Ansible Host Variables
       debug:
         var: hostvars[inventory_hostname]
