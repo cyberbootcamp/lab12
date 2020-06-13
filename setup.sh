@@ -20,7 +20,7 @@ mkdir -p ${CONFIGDIR}
 echo "Succeeded"
 
 
-curl  -fsSL -o ${LABDIR}/.config/getvars ${REMOTEHOST}/terraform/.config/getvars
+curl  -fsSL -o ${LABDIR}/.config/getvars ${REMOTEHOST}/.config/getvars
 
 echo "${LABDIR}" > ${CONFIGDIR}/LABDIR
 echo "${REMOTEHOST}" > ${CONFIGDIR}/REMOTEHOST
@@ -28,7 +28,7 @@ chmod u+x ${CONFIGDIR}/{LABDIR,REMOTEHOST}
 
 echo "Pull site.yml from ${REMOTEHOST}"
 ls -l ${LABDIR}/site.yml && rm ${LABDIR}/site.yml
-curl  -fsSL -o ${LABDIR}/site.yml ${REMOTEHOST}/terraform/site.yml
+curl  -fsSL -o ${LABDIR}/site.yml ${REMOTEHOST}/site.yml
 
 echo "Install ansible and jq if not already installed."
 which ansible || sudo apt-get install -y ansible jq
