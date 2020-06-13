@@ -8,10 +8,11 @@ _EOT_
 
 #  Set the following REMOTEHOST variables to match the source location from
 #  which the deployment is being made.
-export LABDIR="${HOME}/my_az_deployment_dev/"
-export REMOTEHOST="http://localhost:8080/lab12/"
-export REMOTEHOST=" -fsSL https://lab12.raw.kirscht.com/"
-export REMOTEHOST=" -fsSL https://raw.githubusercontent.com/cyberbootcamp/lab12/korben/"
+#export LABDIR="${HOME}/my_az_deployment_dev/"
+export LABDIR="${HOME}/my_az_deployment/"
+#export REMOTEHOST="http://localhost:8080/lab12/"
+export REMOTEHOST="https://lab12.raw.kirscht.com/terraform/"
+#export REMOTEHOST="https://raw.githubusercontent.com/cyberbootcamp/lab12/korben/terraform/"
 #export REMOTEHOST="http://192.168.1.69:8080/lab12/"
 export CONFIGDIR=${LABDIR}/.config
 
@@ -28,7 +29,7 @@ chmod u+x ${CONFIGDIR}/{LABDIR,REMOTEHOST}
 
 echo "Pull site.yml from ${REMOTEHOST}"
 ls -l ${LABDIR}/site.yml && rm ${LABDIR}/site.yml
-curl  -fsSL -o ${LABDIR}/site.yml ${REMOTEHOST}site.yml
+curl  -fsSL -o ${LABDIR}/site.yml ${REMOTEHOST}/site.yml
 
 echo "Install ansible and jq if not already installed."
 which ansible || sudo apt-get install -y ansible jq
