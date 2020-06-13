@@ -1,28 +1,17 @@
 
-
-#resource "azurerm_public_ip" "redteamip" {
-#  name                = "acceptanceTestPublicIp1"
-#  resource_group_name = azurerm_resource_group.rg.name
-#  location            = azurerm_resource_group.rg.location
-#  allocation_method   = "Static"
-#
-#  tags = {
-#    environment = "Production"
-#  }
-#}
-
 # Create network interface
 resource "azurerm_network_interface" "redteam-vm2-nic" {
   name                      = "vm2NIC"
   location                  = azurerm_resource_group.rg.location
   resource_group_name       = azurerm_resource_group.rg.name
   internal_dns_name_label   = "dvwa-vm1"
+  depends_on = [azurerm_subnet_nat_gateway_association.redteam-web]
 
   ip_configuration {
     name                          = "vm2NicConfiguration"
     subnet_id                     = azurerm_subnet.webtier.id
-    private_ip_address_allocation = "Static"
-    private_ip_address            = "10.0.0.6"
+    private_ip_address_allocation = "Dynamic"
+    #private_ip_address            = "10.0.0.6"
     #public_ip_address_id          = azurerm_public_ip.redteamip.id
 
   }
@@ -32,11 +21,11 @@ resource "azurerm_network_interface" "redteam-vm2-nic" {
   }
 }
 
-resource "azurerm_network_interface_security_group_association" "redteam-vm2" {
-  network_interface_id      = azurerm_network_interface.redteam-vm2-nic.id
-  network_security_group_id = azurerm_network_security_group.RedTeamSG.id
-  depends_on = [azurerm_network_interface.redteam-vm2-nic]
-}
+#resource "azurerm_network_interface_security_group_association" "redteam-vm2" {
+#  network_interface_id      = azurerm_network_interface.redteam-vm2-nic.id
+#  network_security_group_id = azurerm_network_security_group.RedTeamSG.id
+#  depends_on = [azurerm_network_interface.redteam-vm2-nic]
+#}
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "redteam-vm2" {
@@ -46,7 +35,7 @@ resource "azurerm_linux_virtual_machine" "redteam-vm2" {
   network_interface_ids = [azurerm_network_interface.redteam-vm2-nic.id]
   size                  = var.machine1_size
   custom_data           = filebase64("cloud-init-2.txt")
-  depends_on = [azurerm_network_interface_security_group_association.redteam-vm2]
+  #depends_on = [azurerm_network_interface_security_group_association.redteam-vm2]
 
   os_disk {
     name              = "machine2-OsDisk"

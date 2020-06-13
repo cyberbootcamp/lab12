@@ -5,6 +5,8 @@
   gather_facts: false
   become: true
   vars:
+    labdir: "{{ lookup('env', 'LABDIR') }}"
+    remotehost: "{{ lookup('env', 'REMOTEHOST') }}"
     ansible_connection: local
     ansible_python_interpreter: "{{ansible_playbook_python}}"
     packages:
@@ -12,7 +14,9 @@
       - jq
     directories:
       - path: ".my_vars"
+      - path: "bin"
       - path: "my_proj"
+      - path: "RedTeam"
       - path: "RedTeam/docker"
       - path: "RedTeam/docker/etc"
       - path: "RedTeam/docker/etc/roles"
@@ -22,6 +26,14 @@
 
 
   tasks:
+
+    - name: LABDIR Variables
+      debug:
+        var: labdir
+
+    - name: REMOTEHOST Variables
+      debug:
+        var: remotehost
 
     - name: Ansible Host Variables
       debug:
@@ -50,8 +62,8 @@
 
     - name: Copy Files
       get_url:
-        url: "https://lab12.raw.kirscht.com/terraform/{{ item.file }}"
-        dest: "/home/kali/my_az_deployment/{{ item.file }}"
+        url: "{{ remotehost }}/{{ item.file }}"
+        dest: "{{ labdir }}/{{ item.file }}"
         mode: "{{ item.mode }}"
         owner: 'kali'
         group: 'kali'
@@ -69,14 +81,16 @@
         - { file: "bin/dvwa-vm1", mode: "0555" }
         - { file: ".config/dummy", mode: "0555" }
         - { file: ".my_vars/dummy", mode: "0555" }
-        - { file: "RedTeam/RedTeam-SG.tf", mode: "0644" }
+        - { file: "RedTeam/RedTeam-SG1.tf", mode: "0644" }
+        - { file: "RedTeam/RedTeam-SG2.tf", mode: "0644" }
+        - { file: "RedTeam/RedTeam-SG3.tf", mode: "0644" }
         - { file: "RedTeam/RedTeam-vars.tf", mode: "0644" }
         - { file: "RedTeam/cloud-init-1.txt", mode: "0644" }
         - { file: "RedTeam/cloud-init-2.txt", mode: "0644" }
         - { file: "RedTeam/loadbalancer.tf", mode: "0644" }
         - { file: "RedTeam/loadbalancer-2.tf", mode: "0644" }
         - { file: "RedTeam/main.tf", mode: "0644" }
-        - { file: "RedTeam/network-1-overlay.tf", mode: "0644" }
+        - { file: "RedTeam/mainv2.tf", mode: "0644" }
         - { file: "RedTeam/network-1.tf", mode: "0644" }
         - { file: "RedTeam/output.tf", mode: "0644" }
         - { file: "RedTeam/RedTeam_public_ip.tf", mode: "0644" }
@@ -84,12 +98,25 @@
         - { file: "RedTeam/subnet-webtier.tf", mode: "0644" }
         - { file: "RedTeam/vm-1.tf", mode: "0644" }
         - { file: "RedTeam/vm-2.tf", mode: "0644" }
-        - { file: "RedTeam/docker/Makefile", mode: "0440" }
-        - { file: "RedTeam/docker/Dockerfile", mode: "0440" }
+        - { file: "RedTeam/docker/Makefile", mode: "0640" }
+        - { file: "RedTeam/docker/Dockerfile", mode: "0740" }
         - { file: "RedTeam/docker/etc/ansible.cfg", mode: "0644" }
         - { file: "RedTeam/docker/etc/hosts", mode: "0644" }
-        - { file: "RedTeam/docker/update_ansible_cfg.sh", mode: "0550" }
-        - { file: "RedTeam/docker/waitfordocker.sh", mode: "0550" }
-        - { file: "RedTeam/docker/autoinstall.sh", mode: "0550" }
-        - { file: "RedTeam/docker/webserver/site.yml", mode: "0550" }
-        - { file: "RedTeam/docker/elasticsearch/site.yml", mode: "0550" }
+        - { file: "RedTeam/docker/update_ansible_cfg.sh", mode: "0750" }
+        - { file: "RedTeam/docker/waitfordocker.sh", mode: "0750" }
+        - { file: "RedTeam/docker/autoinstall.sh", mode: "0750" }
+
+
+
+
+
+
+
+
+
+
+        - { file: "RedTeam/docker/webserver/site.yml", mode: "0650"
+
+
+        }
+        - { file: "RedTeam/docker/elasticsearch/site.yml", mode: "0650" }

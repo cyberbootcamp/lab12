@@ -1,3 +1,11 @@
+variable "resource_base_name_lower" {
+  default = "redteam"
+}
+
+variable "resource_base_name_camel" {
+  default = "RedTeam"
+}
+
 variable "resource_group_name" {
   default = "Red-Team"
 }
