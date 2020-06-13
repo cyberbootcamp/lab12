@@ -11,7 +11,7 @@ _EOT_
 #export LABDIR="${HOME}/my_az_deployment_dev/"
 export LABDIR="${HOME}/my_az_deployment/"
 #export REMOTEHOST="http://localhost:8080/lab12/"
-export REMOTEHOST="https://lab12.raw.kirscht.com/"
+export REMOTEHOST="https://lab12.raw.kirscht.com/terraform/"
 #export REMOTEHOST="https://raw.githubusercontent.com/cyberbootcamp/lab12/korben/terraform/"
 #export REMOTEHOST="http://192.168.1.69:8080/lab12/"
 export CONFIGDIR=${LABDIR}/.config
