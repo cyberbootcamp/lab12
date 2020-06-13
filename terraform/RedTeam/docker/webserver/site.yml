@@ -27,7 +27,13 @@
     - name: download and launch a docker web container
       docker_container:
         name: dvwa
-        #image: cyberxsecurity/dvwa
-        image: httpd
+        image: cyberxsecurity/dvwa
         state: started
         published_ports: 80:80
+
+    - name: download and launch a docker web container
+      docker_container:
+        name: web1
+        image: httpd
+        state: started
+        published_ports: 81:80

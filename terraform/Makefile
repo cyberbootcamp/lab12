@@ -119,7 +119,7 @@ loadbalancer:
 	cp RedTeam/loadbalancer.tf .
 
 .PHONY: deploy_all
-deploy_all:	refresh deploy_vm-2 plan apply sleep30seconds push_DockerFiles
+deploy_all:	refresh deploy_vm-2 loadbalancer plan apply sleep30seconds push_DockerFiles
 	echo "Deployment finished"
 
 .PHONY: set_ip
@@ -147,7 +147,7 @@ init:
 
 # Run the terraform plan.
 .PHONY: plan
-plan:
+plan: set_ip
 	ls terraform.tfstate || . ./setup.sh ; terraform init
 	. ./setup.sh ; terraform plan --out "plan.out"
 
@@ -179,7 +179,7 @@ refresh:
 
 .PHONY: clean
 clean:
-	rm ${HOME}/my_az_deployment/*.tf
+	. ./setup.sh ; rm ${LABDIR}/*.tf
 
 .PHONY: jumpbox_ssh_config
 jumpbox_ssh_config:

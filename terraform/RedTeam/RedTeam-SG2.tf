@@ -4,6 +4,19 @@ resource "azurerm_network_security_group" "RedTeamSG2" {
   resource_group_name = azurerm_resource_group.rg.name
 
   security_rule {
+    name = "Allow-81TCP"
+    priority = 4091
+    direction = "Inbound"
+    access = "Allow"
+    protocol = "TCP"
+    source_port_range = "*"
+    destination_port_range = "81"
+    source_address_prefix = "*" # ar.my_ip_address
+    destination_address_prefix = "*"
+    description = "Allow Web traffic."
+  }
+
+  security_rule {
     name = "Allow-80TCP"
     priority = 4092
     direction = "Inbound"
@@ -11,7 +24,7 @@ resource "azurerm_network_security_group" "RedTeamSG2" {
     protocol = "TCP"
     source_port_range = "*"
     destination_port_range = "80"
-    source_address_prefix = var.my_ip_address
+    source_address_prefix = "*" # ar.my_ip_address
     destination_address_prefix = "*"
     description = "Allow Web traffic."
   }

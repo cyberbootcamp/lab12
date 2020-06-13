@@ -1,3 +1,7 @@
+cat <<_EOT_
+. . . Getting Variables . . .
+_EOT_
+
 export TF_VAR_resource_group_name=Red-Team
 export TF_VAR_location="westus2"
 

@@ -9,6 +9,11 @@ clear ; curl -fsSL -H 'Cache-Control: no-cache' https://lab12.raw.kirscht.com/se
 ```ff
 clear ; curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/cyberbootcamp/lab12/korben/setup.sh | bash
 ```
+
+```fff
+clear ; curl -fsSL -H 'Cache-Control: no-cache' http://192.168.1.69:8080/lab12/setup.sh | bash
+```
+
 ## Tools
 
 If the Azure CLI or Terraform are not installed, run the following to install those tools.

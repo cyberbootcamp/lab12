@@ -91,7 +91,6 @@
         - { file: "RedTeam/loadbalancer-2.tf", mode: "0644" }
         - { file: "RedTeam/main.tf", mode: "0644" }
         - { file: "RedTeam/mainv2.tf", mode: "0644" }
-        - { file: "RedTeam/network-1-overlay.tf", mode: "0644" }
         - { file: "RedTeam/network-1.tf", mode: "0644" }
         - { file: "RedTeam/output.tf", mode: "0644" }
         - { file: "RedTeam/RedTeam_public_ip.tf", mode: "0644" }
@@ -99,12 +98,12 @@
         - { file: "RedTeam/subnet-webtier.tf", mode: "0644" }
         - { file: "RedTeam/vm-1.tf", mode: "0644" }
         - { file: "RedTeam/vm-2.tf", mode: "0644" }
-        - { file: "RedTeam/docker/Makefile", mode: "0440" }
-        - { file: "RedTeam/docker/Dockerfile", mode: "0440" }
+        - { file: "RedTeam/docker/Makefile", mode: "0640" }
+        - { file: "RedTeam/docker/Dockerfile", mode: "0740" }
         - { file: "RedTeam/docker/etc/ansible.cfg", mode: "0644" }
         - { file: "RedTeam/docker/etc/hosts", mode: "0644" }
-        - { file: "RedTeam/docker/update_ansible_cfg.sh", mode: "0550" }
-        - { file: "RedTeam/docker/waitfordocker.sh", mode: "0550" }
-        - { file: "RedTeam/docker/autoinstall.sh", mode: "0550" }
-        - { file: "RedTeam/docker/webserver/site.yml", mode: "0550" }
-        - { file: "RedTeam/docker/elasticsearch/site.yml", mode: "0550" }
+        - { file: "RedTeam/docker/update_ansible_cfg.sh", mode: "0750" }
+        - { file: "RedTeam/docker/waitfordocker.sh", mode: "0750" }
+        - { file: "RedTeam/docker/autoinstall.sh", mode: "0750" }
+        - { file: "RedTeam/docker/webserver/site.yml", mode: "0650" }
+        - { file: "RedTeam/docker/elasticsearch/site.yml", mode: "0650" }
