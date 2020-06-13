@@ -8,7 +8,8 @@ _EOT_
 
 #  Set the following REMOTEHOST variables to match the source location from
 #  which the deployment is being made.
-export LABDIR="${HOME}/my_az_deployment_dev/"
+#export LABDIR="${HOME}/my_az_deployment_dev/"
+export LABDIR="${HOME}/my_az_deployment/"
 #export REMOTEHOST="http://localhost:8080/lab12/"
 export REMOTEHOST="https://lab12.raw.kirscht.com/"
 #export REMOTEHOST="https://raw.githubusercontent.com/cyberbootcamp/lab12/korben/terraform/"
