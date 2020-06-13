@@ -1,5 +1,5 @@
-resource "azurerm_network_security_group" "RedTeamSG" {
-  name                = "RedTeamSecurityGroup"
+resource "azurerm_network_security_group" "RedTeamSG3" {
+  name                = format("%sSecurityGroup3", var.resource_group_name)
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 

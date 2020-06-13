@@ -1,15 +1,15 @@
 
 # Create network interface
 resource "azurerm_network_interface" "redteam-vm1-nic" {
-  name                      = "vm1NIC"
+  name                      = format("%svm1NIC", var.resource_group_name)
   location                  = azurerm_resource_group.rg.location
   resource_group_name       = azurerm_resource_group.rg.name
   internal_dns_name_label   = "jumpbox"
   depends_on = [azurerm_public_ip.redteamip,azurerm_resource_group.rg]
 
   ip_configuration {
-    name                          = "vm1NicConfiguration"
-    subnet_id                     = azurerm_subnet.webtier.id
+    name                          = format("%svm1NicConfiguration", var.resource_group_name)
+    subnet_id                     = azurerm_subnet.dmz.id
     private_ip_address_allocation = "Static"
     private_ip_address            = "10.0.0.4"
     public_ip_address_id          = azurerm_public_ip.redteamip.id
@@ -23,13 +23,13 @@ resource "azurerm_network_interface" "redteam-vm1-nic" {
 
 resource "azurerm_network_interface_security_group_association" "redteam-vm1" {
   network_interface_id      = azurerm_network_interface.redteam-vm1-nic.id
-  network_security_group_id = azurerm_network_security_group.RedTeamSG.id
-  depends_on = [azurerm_network_interface.redteam-vm1-nic,azurerm_network_interface_security_group_association.redteam-vm1]
+  network_security_group_id = azurerm_network_security_group.RedTeamSG1.id
+  depends_on = [azurerm_network_interface.redteam-vm1-nic]
 }
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "redteam-vm1" {
-  name                  = var.machine1_name
+  name                  = format("%s-%s", var.resource_group_name,var.machine1_name)
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.redteam-vm1-nic.id]
@@ -37,7 +37,7 @@ resource "azurerm_linux_virtual_machine" "redteam-vm1" {
   custom_data           = filebase64("cloud-init-1.txt")
 
   os_disk {
-    name              = "machine1-OsDisk"
+    name              = format("%s-%s-%s", var.resource_group_name,var.machine1_name,"machine1-OsDisk")
     caching           = "ReadWrite"
     storage_account_type = var.machine1_osdisk_type
   }
