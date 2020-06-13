@@ -105,5 +105,18 @@
         - { file: "RedTeam/docker/update_ansible_cfg.sh", mode: "0750" }
         - { file: "RedTeam/docker/waitfordocker.sh", mode: "0750" }
         - { file: "RedTeam/docker/autoinstall.sh", mode: "0750" }
-        - { file: "RedTeam/docker/webserver/site.yml", mode: "0650" }
+
+
+
+
+
+
+
+
+
+
+        - { file: "RedTeam/docker/webserver/site.yml", mode: "0650"
+
+
+        }
         - { file: "RedTeam/docker/elasticsearch/site.yml", mode: "0650" }
