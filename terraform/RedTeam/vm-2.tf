@@ -1,22 +1,11 @@
 
-
-#resource "azurerm_public_ip" "redteamip" {
-#  name                = "acceptanceTestPublicIp1"
-#  resource_group_name = azurerm_resource_group.rg.name
-#  location            = azurerm_resource_group.rg.location
-#  allocation_method   = "Static"
-#
-#  tags = {
-#    environment = "Production"
-#  }
-#}
-
 # Create network interface
 resource "azurerm_network_interface" "redteam-vm2-nic" {
   name                      = "vm2NIC"
   location                  = azurerm_resource_group.rg.location
   resource_group_name       = azurerm_resource_group.rg.name
   internal_dns_name_label   = "dvwa-vm1"
+  depends_on = [azurerm_subnet_nat_gateway_association.redteam-web]
 
   ip_configuration {
     name                          = "vm2NicConfiguration"
